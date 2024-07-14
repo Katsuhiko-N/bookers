@@ -26,8 +26,9 @@ class BooksController < ApplicationController
     @book_new = Book.new
   end
 
-
+# 詳細画面
   def show
+    @book = Book.find(params[:id])
   end
 
   def edit
