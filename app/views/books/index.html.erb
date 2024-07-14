@@ -1,7 +1,27 @@
-<h1>一覧兼投稿ページ（仮）</h1>
-
-<% @books.each do |book| %>
+<h1>Books</h1>
 
 <div>
-    <span><%= book.title %></span>
+    <h4>一覧部分（仮）</h4>
+    <% @books.each do |book| %>
+        <p>Title</p>
+        <span><%= book.title %></span>
+        
+        <p>Body</p>
+        <span><%= book.body %></span>
+    <% end %>
+</div>
+
+<!--以下newから移植した投稿部分-->
+<div>
+    <h4>投稿部分（仮）</h4>
+    <!--自動ルーティングがおかしいので厳密に-->
+    <%= form_with model: @book_new, url: '/books', method: :post do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        
+        <h4>Body</h4>
+        <%= f.text_area :body %>
+        
+        <%= f.submit 'Create Book' %>
+    <% end %>
 </div>
