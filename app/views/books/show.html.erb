@@ -8,3 +8,6 @@
     <h2>Body:</h2>
     <p><%= @book.body %></p>
 </div>
+
+<span><%= link_to "back", books_path %></span>
+<span><%= link_to "edit", edit_book_path(@book.id) %></span>
