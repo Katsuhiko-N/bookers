@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     # 投稿成否のフラッシュメッセージ実装
     if book.save
       flash[:notice] ="successfully"
-      redirect_to '/'
+      redirect_to books_path
     else
       render :new
     end
@@ -44,6 +44,13 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     book.update(book_params)
     redirect_to book_path(book.id)
+  end
+  
+  def destroy
+    # urlのidに対応したデータだけ取り出す（記入済み）
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
   end
   
   private

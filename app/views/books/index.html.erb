@@ -3,6 +3,7 @@
 <div>
     <h4>一覧部分（仮）</h4>
     <% @books.each do |book| %>
+    <!--ここから各個データはbookを使う-->
         <p>Title</p>
         <span><%= book.title %></span>
         
@@ -11,7 +12,7 @@
         
         <span><%= link_to "show", book_path(book.id) %></span>
         <span><%= link_to "edit", edit_book_path(book.id) %></span>
-        <span><%= link_to "destroy", books_path %></span>
+        <span><%= link_to "destroy", book_path(book.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></span>
         
     <% end %>
 </div>
