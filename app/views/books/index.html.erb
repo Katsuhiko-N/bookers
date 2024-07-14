@@ -1,25 +1,25 @@
-<h1>Books</h1>
+<h1 class="page_title">Books</h1>
 
 <div>
-    <h4>一覧部分（仮）</h4>
     <% @books.each do |book| %>
     <!--ここから各個データはbookを使う-->
-        <p>Title</p>
-        <span><%= book.title %></span>
-        
-        <p>Body</p>
-        <span><%= book.body %></span>
-        
-        <span><%= link_to "show", book_path(book.id) %></span>
-        <span><%= link_to "edit", edit_book_path(book.id) %></span>
-        <span><%= link_to "destroy", book_path(book.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></span>
+    <table class="index_area">
+        <tr>
+            <td class="title_area"><%= book.title %></td>
+            <td class="body_area"><%= book.body %></td>
+            <td class="button_area">
+            <%= link_to "show", book_path(book.id), class: 'button' %>
+            <%= link_to "edit", edit_book_path(book.id), class: 'button' %>
+            <%= link_to "destroy", book_path(book.id), method: :delete,"data-confirm" => "本当に削除しますか？", class: 'button' %></td>
+        </tr>
+    </table>
         
     <% end %>
 </div>
 
 <!--以下newから移植した投稿部分-->
 <div>
-    <h4>投稿部分（仮）</h4>
+    <h4>New book</h4>
     <!--自動ルーティングがおかしいので厳密に-->
     <%= form_with model: @book, url: '/books', method: :post do |f| %>
         <h4>Title</h4>

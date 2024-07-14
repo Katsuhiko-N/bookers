@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.page_title{
+    margin: 20px 0 20px 20px;
+}
+
+.top-comment{
+    margin: 40px
+}
+
+.index_area{
+    width: 90%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+
+.title_area{
+    width:20%;
+    padding: 0 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.body_area{
+    width:70%;
+    padding: 0 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.button_area{
+    width: 4%;
+    text-align: center;
+}
+
+.button{
+    display: flex;
+}
