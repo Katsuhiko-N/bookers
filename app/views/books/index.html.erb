@@ -26,10 +26,10 @@
             </tr>
         </thead>
     </table>
-    <% @books.each do |book| %>
-    <!--ここから各個データはbookを使う-->
     <table class="index_area">
         <tbody>
+             <% @books.each do |book| %>
+            <!--ここから各個データはbookを使う-->
             <tr>
                 <td class="title_area"><%= book.title %></td>
                 <td class="body_area"><%= book.body %></td>
@@ -38,9 +38,9 @@
                 <%= link_to "Edit", edit_book_path(book.id), class: 'button' %>
                 <%= link_to "Destroy", book_path(book.id), method: :delete,"data-confirm" => "Are you sure？", class: 'button' %></td>
             </tr>
+            <% end %>
         </tbody>
     </table>
-    <% end %>
 </div>
 <!--以下投稿部分-->
 <div class="data_area">
