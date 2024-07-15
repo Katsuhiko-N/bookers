@@ -46,7 +46,7 @@ class BooksController < ApplicationController
     # urlのidに対応したデータだけ取り出す（記入済み）
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] ="Book was successfully updated."
+      flash[:notice] = "Book was successfully updated."
       redirect_to book_path(@book.id)
     else
       render :edit
@@ -57,6 +57,7 @@ class BooksController < ApplicationController
     # urlのidに対応したデータだけ取り出す（記入済み）
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "Book was successfully destroyed."
     redirect_to books_path
   end
   

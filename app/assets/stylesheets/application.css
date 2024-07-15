@@ -25,7 +25,7 @@ a {
 }
 
 p,li{
-    font-size: 12px;
+    font-size: 15px;
 }
 
 
@@ -38,7 +38,7 @@ p,li{
 }
 
 .top-comment{
-    margin: 40px
+    margin: 40px;
 }
 
 .index_area{
@@ -107,4 +107,13 @@ p,li{
 .error_message{
     margin-left: 20px;
     list-style: square;
+}
+
+.flash-message{
+    margin-left: 30px;
+    font-size: 15px;
+}
+
+.flash-message.notice{
+    color: green;
 }

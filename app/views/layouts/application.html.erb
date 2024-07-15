@@ -14,8 +14,10 @@
     <header>
     </header>
     <main>
-      <div>
-        <%= flash[:notice] %>
+      <div class="data_area">
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
       </div>
       <%= yield %>
     </main>
