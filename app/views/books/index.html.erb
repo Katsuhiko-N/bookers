@@ -1,33 +1,58 @@
-<h1 class="page_title">Books</h1>
-
-<div>
+<!--一覧部分-->
+<div class="data_area">
+    
+    <!--エラーが発生しているか-->
+    <% if @book.errors.any? %>
+        <!--エラー件数カウント-->
+        <%= @book.errors.count %>件のエラーが発生しました
+        <ul>
+            <!--エラーメッセージ抽出-->
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    
+    
+    <h1 class="index">Books</h1>
+    <table class="index_area">
+        <thead>
+            <tr>
+                <th class="title_area">Title</th>
+                <th class="body_area">Book</th>
+                <th class="button_area"></th>
+            </tr>
+        </thead>
+    </table>
     <% @books.each do |book| %>
     <!--ここから各個データはbookを使う-->
     <table class="index_area">
-        <tr>
-            <td class="title_area"><%= book.title %></td>
-            <td class="body_area"><%= book.body %></td>
-            <td class="button_area">
-            <%= link_to "show", book_path(book.id), class: 'button' %>
-            <%= link_to "edit", edit_book_path(book.id), class: 'button' %>
-            <%= link_to "destroy", book_path(book.id), method: :delete,"data-confirm" => "本当に削除しますか？", class: 'button' %></td>
-        </tr>
+        <tbody>
+            <tr>
+                <td class="title_area"><%= book.title %></td>
+                <td class="body_area"><%= book.body %></td>
+                <td class="button_area">
+                <%= link_to "Show", book_path(book.id), class: 'button' %>
+                <%= link_to "Edit", edit_book_path(book.id), class: 'button' %>
+                <%= link_to "Destroy", book_path(book.id), method: :delete,"data-confirm" => "本当に削除しますか？", class: 'button' %></td>
+            </tr>
+        </tbody>
     </table>
-        
     <% end %>
 </div>
-
-<!--以下newから移植した投稿部分-->
-<div>
-    <h4>New book</h4>
-    <!--自動ルーティングがおかしいので厳密に-->
+<!--以下投稿部分-->
+<div class="data_area">
+    <h4 class="index">New book</h4>
+    <!--厳密に指定-->
     <%= form_with model: @book, url: '/books', method: :post do |f| %>
-        <h4>Title</h4>
+        <p class="index">Title</p>
         <%= f.text_field :title %>
         
-        <h4>Body</h4>
+        <p class="index">Body</p>
         <%= f.text_area :body %>
         
-        <%= f.submit 'Create Book' %>
+        <div class="switch_area">
+            <%= f.submit 'Create Book', class: 'switch' %>
+        </div>
     <% end %>
 </div>

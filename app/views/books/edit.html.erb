@@ -1,13 +1,32 @@
+<div class="data_area">
+    
+<!--エラーが発生しているか-->
+<% if @book.errors.any? %>
+    <!--エラー件数カウント-->
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+        <!--エラーメッセージ抽出-->
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+    
+    
 <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
-    <h4>Title</h4>
+    <h1 class="index">Editing Book</h1>
+    <p>Title</p>
     <%= f.text_field :title %>
     
-    <h4>Body</h4>
+    <p>Body</p>
     <%= f.text_area :body %>
+    <div class="switch_area">
+        <%= f.submit 'Update Book', class: 'switch' %>
+    </div>
     
-    <%= f.submit 'Update Book' %>
-    
-    <span><%= link_to "show", book_path(@book.id) %></span>
-    <span><%= link_to "back", books_path %></span>
+    <span><%= link_to "Show", book_path(@book.id) %></span>
+    <span>|</span>
+    <span><%= link_to "Back", books_path %></span>
     
 <% end %>
+</div>

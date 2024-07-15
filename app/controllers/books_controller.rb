@@ -9,13 +9,16 @@ class BooksController < ApplicationController
 # 投稿機能
   def create
     # モデルの新規データ（記入済み）
-    book = Book.new(book_params)
+    # エラーメッセージ用にインスタンス変数に変更
+    @book = Book.new(book_params)
     # 投稿成否のフラッシュメッセージ実装
-    if book.save
-      flash[:notice] ="successfully"
-      redirect_to books_path
+    if @book.save
+      flash[:notice] ="Book was successfully created."
+      redirect_to book_path(@book.id)
     else
-      render :new
+      # ここで一覧表示用に@booksを定義しとかないとrenderしたときバグる
+      @books = Book.all
+      render :index
     end
   end
 
