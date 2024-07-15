@@ -44,9 +44,13 @@ class BooksController < ApplicationController
 # 更新機能
   def update
     # urlのidに対応したデータだけ取り出す（記入済み）
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice] ="Book was successfully updated."
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
   
   def destroy

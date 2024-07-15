@@ -1,20 +1,22 @@
 <div class="data_area">
     
-<!--エラーが発生しているか-->
-<% if @book.errors.any? %>
-    <!--エラー件数カウント-->
-    <%= @book.errors.count %>件のエラーが発生しました
-    <ul>
-        <!--エラーメッセージ抽出-->
-        <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-<% end %>
+    <!--エラーが発生しているか-->
+    <% if @book.errors.any? %>
+    <div class="error_area">
+        <!--エラー件数カウント-->
+        <p class="error_title"><%= @book.errors.count %> error prohibited this book from being saved:</p>
+        <ul class="error_message_area">
+            <!--エラーメッセージ抽出-->
+            <% @book.errors.full_messages.each do |message| %>
+            <li class="error_message"><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
     
     
 <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
-    <h1 class="index">Editing Book</h1>
+    <h1 class="header">Editing Book</h1>
     <p>Title</p>
     <%= f.text_field :title %>
     
