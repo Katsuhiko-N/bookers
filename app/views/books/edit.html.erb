@@ -14,8 +14,8 @@
     </div>
     <% end %>
     
-    
-<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+    <!--以下本文-->
+    <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
     <h1 class="header">Editing Book</h1>
     <p>Title</p>
     <%= f.text_field :title %>
